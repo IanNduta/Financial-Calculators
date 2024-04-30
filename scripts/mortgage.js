@@ -16,15 +16,35 @@ function init(){
 
 function onClickedCaculate(){
     //varables
-    let principalInput = principal.value;
-    let InterestInput = annualInterest.value;
-    let yearsInput = years.value;
-    let mortgage;
+    let principalInput = Number(principal.value);
+    let InterestInput = Number(annualInterest.value);
+    let yearsInput = Number(years.value);
+    let monthlyPayment;
 
+
+    console.log(principalInput);
+
+    console.log(InterestInput);
+
+    console.log(yearsInput);
     //equation
 
+    let monthlyInterestRate = InterestInput / 1200;
+    console.log(monthlyInterestRate)
+    let numberOfPayments = yearsInput * 12;
+    //monthlyPayment = principalInput * (  monthlyInterestRate   / 1 - ( 1 + monthlyInterestRate)     ) 
+    monthlyPayment = principalInput * 
+        ( 
+            monthlyInterestRate   
+            / 
+            (1 - ( 1 + monthlyInterestRate)**-numberOfPayments   ) 
+        )
+    //monthlyPayment = principalInput * (  monthlyInterestRate   / 1 - Math.pow( ( 1 + monthlyInterestRate) , -numberOfPayments)    )
+
     //output
-    mortgage = mounthyMortgage.value;
+    mounthyMortgage.value = monthlyPayment;
+
+    
 }
 
 
